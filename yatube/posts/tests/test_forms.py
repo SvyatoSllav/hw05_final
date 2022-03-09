@@ -133,7 +133,7 @@ class PostCreateFormTest(TestCase):
         self.assertEqual(new_post, HTTPStatus.NOT_FOUND)
 
     def test_creating_post_with_image(self):
-        small_gif = (            
+        small_gif = (
             b'\x47\x49\x46\x38\x39\x61\x02\x00'
             b'\x01\x00\x80\x00\x00\x00\x00\x00'
             b'\xFF\xFF\xFF\x21\xF9\x04\x00\x00'
