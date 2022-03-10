@@ -79,3 +79,10 @@ class Follow(models.Model):
         on_delete=models.CASCADE,
         related_name='following'
     )
+
+    def follow_can_be_created(user, author):
+        following_exists = Follow.objects.filter(
+            author=author,
+            user=user
+        ).exists()
+        return (user != author and not following_exists)
