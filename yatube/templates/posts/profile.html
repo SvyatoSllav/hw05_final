@@ -5,7 +5,7 @@
   <div class="container py-5">      
     <h1>Все посты пользователя {{ username }} </h1>
     <h3>Всего постов: {{ number_of_posts }} </h3>
-    {% comment %} {% if following %}
+    {% if following %}
       <a
         class="btn btn-lg btn-light"
         href="{% url 'posts:profile_unfollow' author.username %}" role="button">
@@ -17,7 +17,7 @@
         href="{% url 'posts:profile_follow' author.username %}" role="button">
           Подписаться
       </a>
-    {% endif %} {% endcomment %}
+    {% endif %}
     {% for post in page_obj %}
       <article>
         <ul>
