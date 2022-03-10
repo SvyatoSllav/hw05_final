@@ -13,6 +13,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='comment',
             name='text',
-            field=models.TextField(help_text='Текст нового комментария', max_length=500, verbose_name='Текст'),
+            field=models.TextField(
+                help_text='Текст нового комментария',
+                max_length=500,
+                verbose_name='Текст'),
         ),
     ]
