@@ -5,24 +5,26 @@
   <div class="container py-5">      
     <h1>Все посты пользователя {{ username }} </h1>
     <h3>Всего постов: {{ number_of_posts }} </h3>
-    {% if following %}
-      <a
-        class="btn btn-lg btn-light"
-        href="{% url 'posts:profile_unfollow' author.username %}" role="button">
-          Отписаться
-      </a>
-    {% else %}
-      <a
-        class="btn btn-lg btn-primary"
-        href="{% url 'posts:profile_follow' author.username %}" role="button">
-          Подписаться
-      </a>
-    {% endif %}
+    {% ifnotequal author user%}
+      {% if following %}
+        <a
+          class="btn btn-lg btn-light"
+          href="{% url 'posts:profile_unfollow' author.username %}" role="button">
+            Отписаться 
+        </a>
+      {% else %}
+        <a
+          class="btn btn-lg btn-primary"
+          href="{% url 'posts:profile_follow' author.username %}" role="button">
+            Подписаться
+        </a>
+      {% endif %}
+    {% endifnotequal %}
     {% for post in page_obj %}
       <article>
         <ul>
           <li>
-            Автор: {{ author.get_full_name }}
+            Автор:
             <a href="{% url 'posts:profile' username %}">все посты пользователя</a>
           </li>
           <li>
