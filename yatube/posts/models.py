@@ -11,7 +11,7 @@ class Post(DateTimeModel):
         help_text='Введите текст поста'
     )
     image = models.ImageField(
-        'Картинка',
+        verbose_name='Картинка',
         upload_to='posts/',
         blank=True
     )
