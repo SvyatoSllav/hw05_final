@@ -42,7 +42,7 @@ def profile(request, username, following=False):
     paginator = Paginator(posts, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    number_of_posts = len(posts)
+    number_of_posts = posts.count()
     if request.user.is_authenticated:
         following = Follow.objects.filter(
             author=author,
@@ -143,7 +143,7 @@ def follow_index(request):
 
 @login_required
 def profile_follow(request, username):
-    author = User.objects.get(username=username)
+    author = get_object_or_404(User, username=username)
     if Follow.follow_can_be_created(request.user, author):
         Follow.objects.create(
             user=request.user,
@@ -154,6 +154,6 @@ def profile_follow(request, username):
 
 @login_required
 def profile_unfollow(request, username):
-    author = User.objects.get(username=username)
+    author = get_object_or_404(User, username=username)
     Follow.objects.get(user=request.user, author=author).delete()
     return redirect('posts:profile', username)
