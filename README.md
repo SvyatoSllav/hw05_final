@@ -4,11 +4,7 @@
 
 * Инструментарий:
   * Django 2.2
-  * Python 3.8
-  * Django Unittest
-  * Django debug toolbar
-  * PostgreSQL
-  * Django ORM
+  * Python 3.7
 
 * Запуск:
   * Установка зависимостей:
